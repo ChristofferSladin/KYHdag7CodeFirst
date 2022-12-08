@@ -12,9 +12,20 @@ namespace KYHdag7CodeFirst.Data
         public DbSet<Person> Person { get; set; }
         public DbSet<Person> Invoice { get; set; }
         
-        public ApplicationDbContext()
+        public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)
         {
             // tom constructor för migrations
         }
+
+
+
+        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+        {
+            if (!optionsBuilder.IsConfigured)
+            {
+                optionsBuilder.UseSqlServer(@"Server=.;Database=CodeFirstFirstTry;Trusted_Connection=True;TrustServerCertificate=true;");
+            }
+        }
+
     }
 }
