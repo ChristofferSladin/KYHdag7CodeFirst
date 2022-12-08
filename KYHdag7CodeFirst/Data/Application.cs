@@ -26,6 +26,35 @@ namespace KYHdag7CodeFirst.Data
 
                 //dbContext.Database.Migrate();
             }
+
+            using (var dbContext = new ApplicationDbContext(options.Options))
+            {
+                Console.WriteLine("Create person");
+                Console.WriteLine("-------------");
+                var inputName = Console.ReadLine();
+
+                Console.WriteLine("Age?");
+                var inputAge = int.Parse(Console.ReadLine());
+
+                Console.WriteLine("Shoe size?");
+                var inputShoeSize = int.Parse(Console.ReadLine());
+
+                Console.WriteLine("County?");
+                var countyId = int.Parse(Console.ReadLine());
+                var countyInput = dbContext.County.First(c => c.Id== countyId);
+
+                dbContext.Person.Add(new Person
+                {
+                    Age = inputAge,
+                    Name = inputName,
+                    ShoeSize = inputShoeSize,
+                    County = countyInput
+                });
+
+                dbContext.SaveChanges();
+
+            }
+
         }
     }
 }

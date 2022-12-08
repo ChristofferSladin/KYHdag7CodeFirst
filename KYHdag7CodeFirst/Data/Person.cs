@@ -16,6 +16,7 @@ namespace KYHdag7CodeFirst.Data
         public string Name { get; set; }
         [Range(15,100)]
         public int Age { get; set; }
+        [Range (0,55)]
         public int ShoeSize { get; set; }
         public County County { get; set; }
     }
