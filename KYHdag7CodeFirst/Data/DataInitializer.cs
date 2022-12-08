@@ -11,7 +11,22 @@ namespace KYHdag7CodeFirst.Data
     {
         public void SeedCountys(ApplicationDbContext dbContext)
         {
-
+            if (!dbContext.County.Any(c => c.Name == "Stockholms län"))
+            {
+                dbContext.County.Add(new County
+                {
+                    Name = "Stockholms län",
+                    ContactPerson = "Annie"
+                });
+            }
+            if (!dbContext.County.Any(c => c.Name == "Uppsalas län"))
+            {
+                dbContext.County.Add(new County
+                {
+                    Name = "Uppsalas län",
+                    ContactPerson = "Brand"
+                });
+            }
         }
         public void MigrateAndSeed(ApplicationDbContext dbContext)
         {
