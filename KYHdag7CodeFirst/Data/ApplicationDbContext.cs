@@ -10,14 +10,17 @@ namespace KYHdag7CodeFirst.Data
     public class ApplicationDbContext : DbContext
     {
         public DbSet<Person> Person { get; set; }
-        public DbSet<Person> Invoice { get; set; }
-        
-        public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)
+        public DbSet<Invoice> Invoice { get; set; }
+        public DbSet<County> County { get; set; }
+
+        public ApplicationDbContext()
+        {
+
+        }
+        public ApplicationDbContext(DbContextOptions options) : base(options)
         {
             // tom constructor för migrations
         }
-
-
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
